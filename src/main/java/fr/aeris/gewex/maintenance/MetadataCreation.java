@@ -1,6 +1,5 @@
 package fr.aeris.gewex.maintenance;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -10,12 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.http.HttpStatus;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import fr.aeris.catalog.shared.domain.parameter.Parameter;
 import fr.aeris.commons.metadata.domain.Metadata;
 import fr.aeris.commons.metadata.domain.distribution.DistributionInformation;
 import fr.aeris.commons.metadata.domain.identification.contact.Contact;
@@ -44,7 +38,6 @@ import fr.aeris.commons.metadata.domain.identification.link.impl.OpenSearchLink;
 import fr.aeris.commons.metadata.domain.temporal.Instant;
 import fr.aeris.commons.metadata.domain.temporal.TemporalExtents;
 import fr.aeris.commons.metadata.domain.temporal.TemporalInterval;
-import fr.aeris.commons.metadata.util.UuidUtils;
 import fr.aeris.commons.metadata.util.json.JsonUtils;
 import fr.aeris.gewex.datacenter.rest.services.dao.HistoricalSiteUtils;
 
@@ -118,6 +111,7 @@ public class MetadataCreation {
 		ressourceTitle.addValue(Language.FRENCH, frenchTitle);
 		
 		result.setResourceTitle(ressourceTitle);
+		result.setResourceAbstract(ressourceTitle);
 		
 		ContactList contactList = new ContactList();
 		

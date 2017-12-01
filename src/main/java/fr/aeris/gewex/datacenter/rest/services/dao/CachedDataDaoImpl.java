@@ -1,5 +1,6 @@
 package fr.aeris.gewex.datacenter.rest.services.dao;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -56,6 +57,11 @@ public class CachedDataDaoImpl implements DataDao{
 	@PostConstruct
 	public void init() throws Exception {
 		cachedDao.init();
+	}
+
+	@Override
+	public void downloadYear(String uuid, String year, File localDirectory) throws Exception {
+		cachedDao.downloadYear(uuid, year, localDirectory);
 	}
 
 }
