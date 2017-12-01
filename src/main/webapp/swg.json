@@ -1,0 +1,670 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": ""
+  },
+  "host": "localhost:8080",
+  "basePath": "/datacenter-rest/rest",
+  "tags": [
+    {
+      "name": "test"
+    },
+    {
+      "name": "metadata"
+    },
+    {
+      "name": "data"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/data/download": {
+      "get": {
+        "tags": [
+          "data"
+        ],
+        "operationId": "download",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/data/isalive": {
+      "get": {
+        "tags": [
+          "data"
+        ],
+        "summary": "Tests the availability of the whole service",
+        "description": "",
+        "operationId": "isAlive",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/data/preview": {
+      "get": {
+        "tags": [
+          "data"
+        ],
+        "summary": "Return jdx file content",
+        "description": "",
+        "operationId": "preview",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "query",
+            "description": "Uuid of the spectrum metadata record",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/data/request": {
+      "get": {
+        "tags": [
+          "data"
+        ],
+        "operationId": "request",
+        "parameters": [
+          {
+            "name": "collection",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{collectionName}/instruments": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "summary": "Return the list of instrumentssss",
+        "description": "",
+        "operationId": "instruments",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "program",
+            "in": "query",
+            "description": "The name of the program ",
+            "required": true,
+            "type": "string",
+            "enum": [ "Eurochamp.Spectra", "Eurochamp.Chamber"]
+          },
+          {
+            "name": "collectionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [ "chemin1", "chemin2"]
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/apodizations": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "summary": "Return the list of combinations of apodizations and logarithmes",
+        "description": "",
+        "operationId": "apodizations",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "program",
+            "in": "query",
+            "description": "The name of the program ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/experimenttypes": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getExperimentTypes",
+        "parameters": [
+          
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/id/{id}": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "insert",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/institutes": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getInstitutes",
+        "parameters": [
+          
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/instruments": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "summary": "Return the list of instruments",
+        "description": "",
+        "operationId": "instruments",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "program",
+            "in": "query",
+            "description": "The name of the program ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/isalive": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "isAlive",
+        "parameters": [
+          
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/levels": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getLevels",
+        "parameters": [
+          {
+            "name": "program",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/parameters": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getParameters",
+        "parameters": [
+          {
+            "name": "program",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/plateforms": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getPlateforms",
+        "parameters": [
+          {
+            "name": "program",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/request": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getAllSummaries",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getSummaries",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "program",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/{parameter}/statistics": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "getStatistics",
+        "parameters": [
+          
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ParameterType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Parameter"
+          }
+        }
+      }
+    },
+    "Program": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Collection"
+          }
+        }
+      }
+    },
+    "Sublevel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Plateform": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "EurochampConfig": {
+      "type": "object",
+      "properties": {
+        "acknowledgementTextUrl": {
+          "type": "string"
+        },
+        "workingDirectory": {
+          "type": "string"
+        },
+        "ftpConfig": {
+          "$ref": "#/definitions/FtpConfig"
+        }
+      }
+    },
+    "Collection": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Parameter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "FtpConfig": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "rootFolder": {
+          "type": "string"
+        }
+      }
+    },
+    "Level": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sublevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Sublevel"
+          }
+        }
+      }
+    },
+    "PlatformType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Plateform"
+          }
+        }
+      }
+    },
+    "EurochampMetadataDao": {
+      "type": "object",
+      "properties": {
+        "experimentTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParameterType"
+          }
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Level"
+          }
+        },
+        "programs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Program"
+          }
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlatformType"
+          }
+        }
+      }
+    },
+    "MetadataDao": {
+      "type": "object",
+      "properties": {
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParameterType"
+          }
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Level"
+          }
+        },
+        "programs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Program"
+          }
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlatformType"
+          }
+        }
+      }
+    }
+  }
+}
